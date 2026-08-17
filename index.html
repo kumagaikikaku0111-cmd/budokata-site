@@ -1,31 +1,173 @@
 <!DOCTYPE html>
-
 <html lang="ja">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>武道　形</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: #faf9f5;
+      color: #111;
+      font-family:
+        "Hiragino Mincho ProN",
+        "Yu Mincho",
+        "YuMincho",
+        serif;
+
+      overflow: hidden;
+    }
+
+    .entrance {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 40px 24px;
+
+      position: relative;
+    }
+
+    .logo-link {
+      display: block;
+
+      width: min(78vw, 520px);
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      animation: appear 1.8s ease-out forwards;
+
+      transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+    }
+
+    .logo-link:hover {
+      transform: scale(1.025);
+    }
+
+    .logo-link:active {
+      transform: scale(0.985);
+    }
+
+    .logo {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      border: none;
+    }
+
+    .hint {
+      margin-top: 24px;
+
+      font-size: 12px;
+      letter-spacing: 0.28em;
+
+      color: #777;
+
+      opacity: 0;
+
+      animation: hintAppear 1s ease-out 1.4s forwards;
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0;
+        transform: scale(0.94);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes hintAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      100% {
+        opacity: 0.7;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .entrance {
+        padding: 28px 18px;
+      }
+
+      .logo-link {
+        width: 88vw;
+        max-width: 500px;
+      }
+
+      .hint {
+        margin-top: 18px;
+        font-size: 10px;
+        letter-spacing: 0.24em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-link,
+      .hint {
+        animation: none;
+        opacity: 1;
+      }
+
+      .logo-link {
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>武道　形</h1>
+  <main class="entrance">
 
-  <p>日本の武道の「形」を、いつでも。</p>
+    <a
+      href="home.html"
+      class="logo-link"
+      aria-label="武道　形のサイトへ進む"
+    >
+      <img
+        src="logo.png"
+        alt="武道　形"
+        class="logo"
+      >
+    </a>
 
-  <h2>剣道形</h2>
+    <div class="hint">
+      TAP TO ENTER
+    </div>
 
-  <p>
-
-    剣道形を動画と解説で学ぶためのアプリです。
-
-  </p>
+  </main>
 
 </body>
-
 </html>
