@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>武道　形</title>
@@ -20,154 +21,70 @@
     }
 
     body {
-      background: #faf9f5;
-      color: #111;
+      background: #f7f4ed;
+      color: #222;
       font-family:
-        "Hiragino Mincho ProN",
-        "Yu Mincho",
-        "YuMincho",
-        serif;
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "YuGothic",
+        sans-serif;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       overflow: hidden;
+
+      animation: pageFadeIn 1.8s ease forwards;
     }
 
     .entrance {
       width: 100%;
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
 
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
       padding: 40px 24px;
-
-      position: relative;
     }
 
     .logo-link {
       display: block;
-
-      width: min(78vw, 520px);
-
-      cursor: pointer;
-
       text-decoration: none;
 
-      animation: appear 1.8s ease-out forwards;
+      opacity: 0;
+      animation: logoFadeIn 1.8s ease 0.2s forwards;
+
+      cursor: pointer;
+    }
+
+    .logo-link img {
+      display: block;
+
+      width: min(68vw, 360px);
+      height: auto;
 
       transition:
         transform 0.5s ease,
         opacity 0.5s ease;
     }
 
-    .logo-link:hover {
-      transform: scale(1.025);
+    .logo-link:hover img {
+      transform: scale(1.02);
+      opacity: 0.88;
     }
 
-    .logo-link:active {
-      transform: scale(0.985);
-    }
+    .enter-button {
+      margin-top: 42px;
 
-    .logo {
-      display: block;
+      padding: 11px 34px;
 
-      width: 100%;
-      height: auto;
+      background: transparent;
 
-      border: none;
-    }
-
-    .hint {
-      margin-top: 24px;
-
-      font-size: 12px;
-      letter-spacing: 0.28em;
-
-      color: #777;
-
-      opacity: 0;
-
-      animation: hintAppear 1s ease-out 1.4s forwards;
-    }
-
-    @keyframes appear {
-      0% {
-        opacity: 0;
-        transform: scale(0.94);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes hintAppear {
-      0% {
-        opacity: 0;
-        transform: translateY(5px);
-      }
-
-      100% {
-        opacity: 0.7;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .entrance {
-        padding: 28px 18px;
-      }
-
-      .logo-link {
-        width: 88vw;
-        max-width: 500px;
-      }
-
-      .hint {
-        margin-top: 18px;
-        font-size: 10px;
-        letter-spacing: 0.24em;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .logo-link,
-      .hint {
-        animation: none;
-        opacity: 1;
-      }
-
-      .logo-link {
-        transform: none;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <main class="entrance">
-
-    <a
-      href="home.html"
-      class="logo-link"
-      aria-label="武道　形のサイトへ進む"
-    >
-      <img
-        src="budokata_logo_.png"
-        alt="武道　形"
-        class="logo"
-      >
-    </a>
-
-    <div class="hint">
-      TAP TO ENTER
-    </div>
-
-  </main>
-
-</body>
-</html>
+      border: 1px solid #777;
+      border-radius: 0;
