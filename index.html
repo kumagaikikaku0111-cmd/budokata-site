@@ -12,17 +12,17 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html,
     body {
       margin: 0;
       padding: 0;
+      width: 100%;
+      height: 100%;
+    }
 
+    body {
       background: #f7f4ed;
       color: #222;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -32,419 +32,59 @@
         "YuGothic",
         sans-serif;
 
-      line-height: 1.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
+
+      animation: pageFadeIn 1.8s ease forwards;
     }
 
-    .container {
-      width: min(900px, 88%);
-      margin: 0 auto;
-    }
-
-    /* =========================
-       ファーストビュー
-    ========================= */
-
-    .hero {
-      min-height: 75vh;
+    .entrance {
+      width: 100%;
+      min-height: 100vh;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
 
-      text-align: center;
-
-      padding: 80px 20px;
+      padding: 40px 24px;
     }
 
-    .hero-logo {
-      width: min(55vw, 300px);
+    .logo-link {
+      display: block;
+      text-decoration: none;
+
+      opacity: 0;
+      animation: logoFadeIn 1.8s ease 0.2s forwards;
+
+      cursor: pointer;
+    }
+
+    .logo-link img {
+      display: block;
+
+      width: min(68vw, 360px);
       height: auto;
 
-      margin-bottom: 45px;
+      transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
     }
 
-    .hero-title {
-      margin: 0;
-
-      font-size: clamp(22px, 4vw, 34px);
-      font-weight: 400;
-
-      letter-spacing: 0.18em;
+    .logo-link:hover img {
+      transform: scale(1.02);
+      opacity: 0.88;
     }
 
-    .hero-subtitle {
-      margin-top: 18px;
+    .enter-button {
+      margin-top: 42px;
 
-      font-size: 14px;
-      letter-spacing: 0.15em;
+      padding: 11px 34px;
 
-      color: #555;
-    }
+      background: transparent;
 
-    /* =========================
-       セクション
-    ========================= */
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-title {
-      margin: 0 0 45px;
-
-      text-align: center;
-
-      font-size: 22px;
-      font-weight: 400;
-
-      letter-spacing: 0.18em;
-    }
-
-    .section-text {
-      max-width: 650px;
-
-      margin: 0 auto;
-
-      text-align: center;
-
-      font-size: 15px;
-      letter-spacing: 0.08em;
-
-      color: #444;
-    }
-
-    /* =========================
-       スクリーンショット
-    ========================= */
-
-    .screenshots {
-      display: flex;
-
-      justify-content: center;
-      align-items: flex-start;
-
-      gap: 30px;
-
-      margin-top: 55px;
-    }
-
-    .screenshot {
-      width: 30%;
-
-      aspect-ratio: 9 / 19;
-
-      border: 1px solid #d4d0c7;
-
-      background: #ebe7de;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      text-align: center;
-
-      color: #999;
-
-      font-size: 12px;
-      letter-spacing: 0.08em;
-    }
-
-    /* =========================
-       ストア
-    ========================= */
-
-    .stores {
-      display: flex;
-
-      justify-content: center;
-
-      gap: 25px;
-
-      margin-top: 50px;
-    }
-
-    .store {
-      width: 210px;
-
-      padding: 18px 20px;
-
-      border: 1px solid #999;
-
-      text-align: center;
-
-      font-size: 13px;
-
-      letter-spacing: 0.12em;
-    }
-
-    .store-name {
-      display: block;
-
-      font-size: 15px;
-
-      margin-bottom: 5px;
-    }
-
-    .coming-soon {
-      display: block;
-
-      font-size: 11px;
-
-      color: #777;
-
-      letter-spacing: 0.15em;
-    }
-
-    /* =========================
-       フッター
-    ========================= */
-
-    footer {
-      padding: 60px 20px 40px;
-
-      text-align: center;
-
-      border-top: 1px solid #dedad1;
-
-      color: #555;
-    }
-
-    .footer-title {
-      font-size: 15px;
-
-      letter-spacing: 0.15em;
-
-      margin-bottom: 15px;
-    }
-
-    .creator {
-      font-size: 13px;
-
-      letter-spacing: 0.1em;
-    }
-
-    .copyright {
-      margin-top: 25px;
-
-      font-size: 10px;
-
-      color: #888;
-
-      letter-spacing: 0.08em;
-    }
-
-    /* =========================
-       スマートフォン
-    ========================= */
-
-    @media (max-width: 600px) {
-
-      .hero {
-        min-height: 70vh;
-
-        padding: 70px 20px;
-      }
-
-      .hero-logo {
-        width: min(65vw, 280px);
-
-        margin-bottom: 35px;
-      }
-
-      section {
-        padding: 70px 0;
-      }
-
-      .section-title {
-        margin-bottom: 35px;
-
-        font-size: 20px;
-      }
-
-      .section-text {
-        font-size: 14px;
-
-        line-height: 2;
-      }
-
-      .screenshots {
-        gap: 12px;
-      }
-
-      .screenshot {
-        width: 31%;
-
-        font-size: 10px;
-      }
-
-      .stores {
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 15px;
-      }
-
-      .store {
-        width: min(280px, 80%);
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- =========================
-       ファーストビュー
-  ========================= -->
-
-  <header class="hero">
-
-    <img
-      src="budokata_logo_.png"
-      alt="武道　形"
-      class="hero-logo"
-    >
-
-    <h1 class="hero-title">
-      日本の武道の「形」を、いつでも。
-    </h1>
-
-    <p class="hero-subtitle">
-      武道　形
-    </p>
-
-  </header>
-
-
-  <!-- =========================
-       アプリについて
-  ========================= -->
-
-  <main>
-
-    <section>
-
-      <div class="container">
-
-        <h2 class="section-title">
-          武道　形
-        </h2>
-
-        <p class="section-text">
-          「武道　形」は、武道に受け継がれてきた
-          「形」を学ぶためのアプリです。
-          <br>
-          動画と解説、ポイントを通して、
-          いつでも形を学ぶことができます。
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         アプリ画面
-    ========================= -->
-
-    <section>
-
-      <div class="container">
-
-        <h2 class="section-title">
-          アプリ画面
-        </h2>
-
-        <div class="screenshots">
-
-          <div class="screenshot">
-            SCREENSHOT 01
-          </div>
-
-          <div class="screenshot">
-            SCREENSHOT 02
-          </div>
-
-          <div class="screenshot">
-            SCREENSHOT 03
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ダウンロード
-    ========================= -->
-
-    <section>
-
-      <div class="container">
-
-        <h2 class="section-title">
-          DOWNLOAD
-        </h2>
-
-        <div class="stores">
-
-          <div class="store">
-
-            <span class="store-name">
-              App Store
-            </span>
-
-            <span class="coming-soon">
-              近日リリース
-            </span>
-
-          </div>
-
-
-          <div class="store">
-
-            <span class="store-name">
-              Google Play
-            </span>
-
-            <span class="coming-soon">
-              近日リリース
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       フッター
-  ========================= -->
-
-  <footer>
-
-    <div class="footer-title">
-      武道　形
-    </div>
-
-    <div class="creator">
-      熊谷企画
-    </div>
-
-    <div class="copyright">
-      © Kumagai Kikaku
-    </div>
-
-  </footer>
-
-</body>
-</html>
+      border: 1px solid #777;
+      border-radius: 0;
