@@ -39,6 +39,63 @@
       margin: 0 auto;
     }
 
+    .lang-switcher {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 1000;
+
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-button {
+      appearance: none;
+      border: 1px solid #999;
+      background: rgba(247, 244, 237, 0.92);
+      color: #222;
+      cursor: pointer;
+
+      padding: 8px 12px;
+      border-radius: 999px;
+
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .lang-button:hover {
+      background: #fff;
+    }
+
+    .lang-button.is-active {
+      background: #222;
+      color: #f7f4ed;
+      border-color: #222;
+    }
+
+    .coming-soon-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      z-index: 1000;
+
+      background: rgba(34, 34, 34, 0.92);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+
+      font-size: 13px;
+      letter-spacing: 0.04em;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .coming-soon-toast.is-visible {
+      opacity: 1;
+    }
 
     /* =========================
        ファーストビュー
@@ -83,11 +140,6 @@
       color: #666;
     }
 
-
-    /* =========================
-       セクション
-    ========================= */
-
     section {
       padding: 80px 0;
     }
@@ -118,11 +170,6 @@
 
       color: #444;
     }
-
-
-    /* =========================
-       アプリ画面
-    ========================= */
 
     .screenshots {
       display: flex;
@@ -157,11 +204,6 @@
 
       letter-spacing: 0.08em;
     }
-
-
-    /* =========================
-       ダウンロード
-    ========================= */
 
     .stores {
       display: flex;
@@ -203,11 +245,6 @@
       letter-spacing: 0.12em;
     }
 
-
-    /* =========================
-       フッター
-    ========================= */
-
     footer {
       padding: 55px 20px 35px;
 
@@ -234,13 +271,7 @@
       letter-spacing: 0.08em;
     }
 
-
-    /* =========================
-       スマートフォン
-    ========================= */
-
     @media (max-width: 600px) {
-
       .hero {
         min-height: 70vh;
 
@@ -301,53 +332,44 @@
         width: min(280px, 80%);
       }
     }
-
   </style>
 </head>
 
-
 <body>
+  <div class="lang-switcher" aria-label="Language switcher">
+    <button class="lang-button is-active" type="button" id="jpnButton">JPN</button>
+    <button class="lang-button" type="button" id="engButton">ENG</button>
+  </div>
 
-
-  <!-- =========================
-       ファーストビュー
-  ========================= -->
+  <div class="coming-soon-toast" id="comingSoonToast" role="status" aria-live="polite">
+    English version coming soon
+  </div>
 
   <header class="hero">
-
     <img
       src="budokata_logo_.png"
       alt="武道　形"
       class="hero-logo"
+      id="heroLogo"
     >
 
-    <h1 class="hero-title">
+    <h1 class="hero-title" id="heroTitle">
       日本の武道の「形」を、いつでも。
     </h1>
 
-    <p class="hero-subtitle">
+    <p class="hero-subtitle" id="heroSubtitle">
       武道　形
     </p>
-
   </header>
 
-
   <main>
-
-
-    <!-- =========================
-         アプリについて
-    ========================= -->
-
     <section>
-
       <div class="container">
-
-        <h2 class="section-title">
+        <h2 class="section-title" id="aboutTitle">
           武道　形
         </h2>
 
-        <p class="section-text">
+        <p class="section-text" id="aboutText">
           「武道　形」は、
           武道に受け継がれてきた「形」を
           学ぶためのアプリです。
@@ -355,111 +377,109 @@
           動画と解説、ポイントを通して、
           いつでも形を学ぶことができます。
         </p>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         アプリ画面
-    ========================= -->
-
     <section>
-
       <div class="container">
-
-        <h2 class="section-title">
+        <h2 class="section-title" id="screensTitle">
           アプリ画面
         </h2>
 
         <div class="screenshots">
-
-          <div class="screenshot">
-            SCREENSHOT 01
-          </div>
-
-          <div class="screenshot">
-            SCREENSHOT 02
-          </div>
-
-          <div class="screenshot">
-            SCREENSHOT 03
-          </div>
-
+          <div class="screenshot" id="shot1">SCREENSHOT 01</div>
+          <div class="screenshot" id="shot2">SCREENSHOT 02</div>
+          <div class="screenshot" id="shot3">SCREENSHOT 03</div>
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         ダウンロード
-    ========================= -->
-
     <section>
-
       <div class="container">
-
-        <h2 class="section-title">
+        <h2 class="section-title" id="downloadTitle">
           DOWNLOAD
         </h2>
 
         <div class="stores">
-
           <div class="store">
-
-            <span class="store-name">
-              App Store
-            </span>
-
-            <span class="coming-soon">
-              近日リリース
-            </span>
-
+            <span class="store-name" id="appStoreName">App Store</span>
+            <span class="coming-soon" id="appStoreStatus">近日リリース</span>
           </div>
 
-
           <div class="store">
-
-            <span class="store-name">
-              Google Play
-            </span>
-
-            <span class="coming-soon">
-              近日リリース
-            </span>
-
+            <span class="store-name" id="googlePlayName">Google Play</span>
+            <span class="coming-soon" id="googlePlayStatus">近日リリース</span>
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-
   </main>
 
-
-  <!-- =========================
-       フッター
-  ========================= -->
-
   <footer>
-
-    <div class="footer-title">
-      武道　形
-    </div>
-
-    <div class="copyright">
-      © 武道　形
-    </div>
-
+    <div class="footer-title" id="footerTitle">武道　形</div>
+    <div class="copyright" id="copyright">© 武道　形</div>
   </footer>
 
+  <script>
+    const jpnButton = document.getElementById('jpnButton');
+    const engButton = document.getElementById('engButton');
+    const toast = document.getElementById('comingSoonToast');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    const aboutTitle = document.getElementById('aboutTitle');
+    const aboutText = document.getElementById('aboutText');
+    const screensTitle = document.getElementById('screensTitle');
+    const downloadTitle = document.getElementById('downloadTitle');
+    const appStoreStatus = document.getElementById('appStoreStatus');
+    const googlePlayStatus = document.getElementById('googlePlayStatus');
+    const footerTitle = document.getElementById('footerTitle');
+    const copyright = document.getElementById('copyright');
 
+    let toastTimer;
+
+    const setLanguage = (lang) => {
+      const isEnglish = lang === 'en';
+
+      jpnButton.classList.toggle('is-active', !isEnglish);
+      engButton.classList.toggle('is-active', isEnglish);
+      document.documentElement.lang = isEnglish ? 'en' : 'ja';
+      document.title = isEnglish ? 'Budo Kata' : '武道　形';
+
+      heroTitle.textContent = isEnglish
+        ? 'Anytime, learn the kata of Japanese budo.'
+        : '日本の武道の「形」を、いつでも。';
+
+      heroSubtitle.textContent = isEnglish
+        ? 'Budo Kata'
+        : '武道　形';
+
+      aboutTitle.textContent = isEnglish ? 'Budo Kata' : '武道　形';
+      aboutText.innerHTML = isEnglish
+        ? '"Budo Kata" is an app for learning the kata passed down in Japanese budo.<br><br>Through videos, explanations, and key points, you can learn kata anytime.'
+        : '「武道　形」は、<br>武道に受け継がれてきた「形」を<br>学ぶためのアプリです。<br><br>動画と解説、ポイントを通して、<br>いつでも形を学ぶことができます。';
+
+      screensTitle.textContent = isEnglish ? 'App Screens' : 'アプリ画面';
+      downloadTitle.textContent = 'DOWNLOAD';
+      appStoreStatus.textContent = isEnglish ? 'Coming soon' : '近日リリース';
+      googlePlayStatus.textContent = isEnglish ? 'Coming soon' : '近日リリース';
+      footerTitle.textContent = isEnglish ? 'Budo Kata' : '武道　形';
+      copyright.textContent = isEnglish ? '© Budo Kata' : '© 武道　形';
+    };
+
+    engButton.addEventListener('click', () => {
+      setLanguage('en');
+      toast.textContent = 'English version coming soon';
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('is-visible');
+      }, 2000);
+    });
+
+    jpnButton.addEventListener('click', () => {
+      setLanguage('ja');
+      toast.classList.remove('is-visible');
+    });
+  </script>
 </body>
 </html>
-
