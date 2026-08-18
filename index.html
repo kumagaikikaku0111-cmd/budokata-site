@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>武道　形</title>
@@ -23,6 +22,7 @@
     body {
       background: #f7f4ed;
       color: #222;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -58,6 +58,7 @@
       text-decoration: none;
 
       opacity: 0;
+
       animation: logoFadeIn 1.8s ease 0.2s forwards;
 
       cursor: pointer;
@@ -80,6 +81,8 @@
     }
 
     .enter-button {
+      display: inline-block;
+
       margin-top: 42px;
 
       padding: 11px 34px;
@@ -88,3 +91,85 @@
 
       border: 1px solid #777;
       border-radius: 0;
+
+      color: #333;
+
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-indent: 0.28em;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      opacity: 0;
+
+      animation: buttonFadeIn 1.5s ease 0.9s forwards;
+
+      transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+    }
+
+    .enter-button:hover {
+      background: #222;
+      color: #f7f4ed;
+      border-color: #222;
+    }
+
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes logoFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes buttonFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="entrance">
+
+    <a href="home.html" class="logo-link">
+      <img
+        src="budokata_logo_.png"
+        alt="武道　形"
+      >
+    </a>
+
+    <a href="home.html" class="enter-button">
+      ENTER
+    </a>
+
+  </main>
+
+</body>
+</html>
